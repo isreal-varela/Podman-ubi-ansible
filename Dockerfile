@@ -33,6 +33,9 @@ RUN yum makecache --timer \
 RUN pip3 install -U pip
 RUN pip3 install $pip_packages
 
+# Install Ansible Galaxy collections
+RUN ansible-galaxy collection install community.libvirt
+
 # Disable requiretty
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 
